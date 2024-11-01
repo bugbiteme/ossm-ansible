@@ -1,8 +1,8 @@
 
-Step 1: Ansible scripts for the deployment of connectivity link (Operators etc)
+Step 1: Ansible scripts for the deployment of OpenShift Service Mesh (Operators etc)
 
 cd operator-setup
-ansible-playbook playbooks/ocp4_workload_connectivity_link.yml  -e ACTION=create -i inventories/inventory.template
+ansible-playbook playbooks/ocp4_workload_ossm.yml  -e ACTION=create -i inventories/inventory.template
 
 Step 2: Demo setup
 

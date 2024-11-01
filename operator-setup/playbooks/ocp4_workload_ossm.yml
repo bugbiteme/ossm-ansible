@@ -1,0 +1,12 @@
+---
+
+- name: Install OpenShift Service Mesh
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  run_once: true
+
+  tasks:
+    - name: "Install OpenShift Service Mesh"
+      ansible.builtin.include_role:
+        name: ocp4_workload_ossm
