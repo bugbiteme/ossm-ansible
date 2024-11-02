@@ -25,6 +25,23 @@ ocp4_workload_connectivity_link_openshift_gitops_update_route_tls: true
 
 ocp4_workload_connectivity_link_openshift_gitops_update_resources: true
 
+# ------------------------------------------------
+# OSSM
+# ------------------------------------------------
+ocp4_workload_ossm_gitops_repo: https://github.com/bugbiteme/ServiceMeshDemo.git
+ocp4_workload_connectivity_link_ossm_operator_application_name: ossm-operators
+ocp4_workload_connectivity_link_ossm_operator_application_namespace: openshift-operators
+ocp4_workload_connectivity_link_ossm_operator_gitops_repo: "{{ ocp4_workload_ossm_gitops_repo }}"
+ocp4_workload_connectivity_link_ossm_operator_gitops_repo_tag: main
+ocp4_workload_connectivity_link_ossm_operator_gitops_repo_path: infra
+
+ocp4_workload_connectivity_link_ossm_operator_operator_channel: stable
+ocp4_workload_connectivity_link_ossm_operator_operator_install_plan_approval: Automatic
+ocp4_workload_connectivity_link_ossm_operator_operator_starting_csv: ""
+ocp4_workload_connectivity_link_ossm_operator_operator_name: ossm-operator
+ocp4_workload_connectivity_link_ossm_operator_catalogsource_image: quay.io/ossm/ossm-operator-catalog:v0.8.0
+
+
 # ApplicationSet Controller
 ocp4_workload_connectivity_link_openshift_gitops_applicationset_controller_update: false
 ocp4_workload_connectivity_link_openshift_gitops_applicationset_controller_requests_cpu: 250m

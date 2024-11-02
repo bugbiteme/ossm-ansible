@@ -11,6 +11,9 @@
 - name: Setup OpenShift Gitops
   ansible.builtin.include_tasks: openshift_gitops_setup.yml
 
+- name: Install OpenShift Service Mesh Operators (Kiali, Jager, OSSM)
+  ansible.builtin.include_tasks: openshift_service_mesh.yml
+
 # - name: Install Kuadrant
 #  ansible.builtin.include_tasks: kuadrant.yml
 

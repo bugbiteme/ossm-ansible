@@ -1,0 +1,11 @@
+---
+
+- name: Install OSSM operators via GitOps
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'ossm_operator_application.yaml.j2') | from_yaml }}"
+
+# - name: Install OSSM Control Plane (istio-system)
+#  kubernetes.core.k8s:
+#    state: present
+#    definition: "{{ lookup('template', 'kuadrant_application.yaml.j2') | from_yaml }}"
