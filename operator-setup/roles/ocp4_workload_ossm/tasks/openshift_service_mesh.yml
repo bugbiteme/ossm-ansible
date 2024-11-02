@@ -5,6 +5,28 @@
     state: present
     definition: "{{ lookup('template', 'ossm_operator_application.yaml.j2') | from_yaml }}"
 
+- name: Wait for all required OpenShift operators to be ready
+  vars:
+    operators:
+      - "istio-operator"
+      - "kiali-operator"
+  block:
+    - name: Check each operator's status until all are ready
+      kubernetes.core.k8s_info:
+        kind: Deployment
+        namespace: "openshift-operators"
+        name: "{{ item }}"
+      register: operator_info
+      until: operator_info.resources | length > 0 and operator_info.resources[0].status.availableReplicas == operator_info.resources[0].status.replicas
+      retries: 20
+      delay: 15
+      loop: "{{ operators }}"
+      ignore_errors: false
+
+    - name: Confirm that all operators are ready
+      debug:
+        msg: "All specified OpenShift Service Mesh operators are ready."
+        
 # - name: Install OSSM Control Plane (istio-system)
 #  kubernetes.core.k8s:
 #    state: present
