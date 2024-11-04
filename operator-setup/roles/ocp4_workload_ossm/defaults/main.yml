@@ -332,6 +332,21 @@ ocp4_workload_connectivity_link_echo_api_http_route_host: echo
 ocp4_workload_connectivity_link_monitoring_hub: true
 
 # ------------------------------------------------
+# Hello Service Api test app
+# ------------------------------------------------
+
+ocp4_workload_connectivity_link_hello_service_api_application_name: hello-service
+ocp4_workload_connectivity_link_hello_service_api_application_namespace: hello-service
+ocp4_workload_connectivity_link_hello_service_api_gitops_repo: "{{ ocp4_workload_connectivity_link_gitops_repo }}"
+ocp4_workload_connectivity_link_hello_service_api_gitops_repo_tag: main
+ocp4_workload_connectivity_link_hello_service_api_gitops_repo_path: application
+
+ocp4_workload_connectivity_link_hello_service_api_http_route_host: hello-service
+
+
+# ocp4_workload_connectivity_link_monitoring_hub: true
+
+# ------------------------------------------------
 # Web Terminal Operator
 # ------------------------------------------------
 
