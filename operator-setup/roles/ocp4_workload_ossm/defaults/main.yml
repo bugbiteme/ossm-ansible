@@ -219,10 +219,11 @@ ocp4_workload_connectivity_link_sail_operator_catalogsource: community-operators
 ocp4_workload_connectivity_link_sail_operator_catalogsource_namespace: openshift-marketplace
 
 # ------------------------------------------------
-# Istio
+# Istio - Note this is way playbook is actually looking at. 
+# [TODO] - delete redundancy
 # ------------------------------------------------
 
-ocp4_workload_connectivity_link_istio_application_name: istio
+ocp4_workload_connectivity_link_istio_application_name: istio-system
 ocp4_workload_connectivity_link_istio_application_namespace: istio-system
 ocp4_workload_connectivity_link_istio_gitops_repo: "{{ ocp4_workload_connectivity_link_gitops_repo }}"
 ocp4_workload_connectivity_link_istio_gitops_repo_tag: main
