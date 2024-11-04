@@ -43,3 +43,8 @@
   until: kiali_pods.resources | selectattr('status.phase', 'equalto', 'Running') | list | length > 0
   retries: 10
   delay: 30
+
+- name: Note to provisioner
+  debug:
+    msg: "Ignore OutOfSync in ArgoCD istio-system"
+
