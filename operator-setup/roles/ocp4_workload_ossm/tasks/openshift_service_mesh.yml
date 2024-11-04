@@ -26,8 +26,20 @@
     - name: Confirm that all operators are ready
       debug:
         msg: "All specified OpenShift Service Mesh operators are ready."
-        
-# - name: Install OSSM Control Plane (istio-system)
-#  kubernetes.core.k8s:
-#    state: present
-#    definition: "{{ lookup('template', 'kuadrant_application.yaml.j2') | from_yaml }}"
+
+- name: Install Istio Control Plane via GitOps
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'istio_application.yaml.j2') | from_yaml }}"
+
+- name: Wait for Kiali pod to be ready
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: istio-system
+    label_selectors:
+      - app=kiali
+  register: kiali_pods
+  until: kiali_pods.resources | selectattr('status.phase', 'equalto', 'Running') | list | length > 0
+  retries: 10
+  delay: 30
